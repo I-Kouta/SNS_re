@@ -45,7 +45,7 @@ class FollowsController extends Controller
 
     public function followerList(){
         // 誰が(following_id)自分をフォローしているか
-        $followed_id = Auth::user()->follows()->pluck('following_id');
+        $followed_id = Auth::user()->followers()->pluck('following_id');
         $lists = Post::with('user')->whereIn('user_id', $followed_id)->latest()->get();
         $image = User::get();
         return view('follows.FollowerList')->with([
