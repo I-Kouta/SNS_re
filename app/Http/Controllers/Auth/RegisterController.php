@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -75,7 +74,7 @@ class RegisterController extends Controller
     //     return view("auth.register");
     // }
 
-    public function register(RegisterFormRequest $request){
+    public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input(); // ここに入力したデータが入っている
             // dd($data); // デバッグ関数
