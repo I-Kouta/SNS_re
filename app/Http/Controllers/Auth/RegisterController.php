@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterFormRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -70,24 +71,18 @@ class RegisterController extends Controller
         ]);
     }
 
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
+    public function registerForm(){
+        return view("auth.register");
+    }
 
-    public function register(Request $request){
-        if($request->isMethod('post')){
+    public function register(RegisterFormRequest $request){
+        // if($request->isMethod('post')){
             $data = $request->input(); // ここに入力したデータが入っている
             // dd($data); // デバッグ関数
-            $request->validate([
-                'username' => 'required|string|min:2|max:12',
-                'mail' => 'required|string|email|min:5|max:40|unique:users',
-                'password' => 'required|string|min:8|max:20|confirmed'
-            ]);
             $this->create($data); // ここで実際に登録作業を行っている(64行目へ)
             $request->session()->put('username', $data['username']); // ここでセッションにusernameを保存する
             return redirect('added'); // ユーザー登録完了の画面、次へ進む
-        }
-        return view('auth.register'); // 新規登録の画面、留まる
+        // }
     }
 
     public function added(){

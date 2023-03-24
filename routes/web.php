@@ -23,7 +23,7 @@ Route::group(["middleware" => "guest"], function() {
   Route::get('/login', 'Auth\LoginController@login')->name('login'); // ルーティング->('任意の名前');
   Route::post('/login', 'Auth\LoginController@login');
 
-  Route::get('/register', 'Auth\RegisterController@register');
+  Route::get('/register', 'Auth\RegisterController@registerForm');
   Route::post('/register', 'Auth\RegisterController@register');
 
   Route::get('/added', 'Auth\RegisterController@added');
