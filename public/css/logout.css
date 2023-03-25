@@ -42,13 +42,13 @@ h2{
 }
 
 .gray-back{
-    background-color: rgb(105, 105, 105, 0.3);
+    background-color: rgb(105, 105, 105, 0.4);
     padding: 50px;
     border-radius: 10px;
 }
 
 a{
-    color: #ffffff;
+    color: rgb(255, 255, 255);
 }
 
 .input{
@@ -61,7 +61,7 @@ a{
 }
 
 .name, .address, .pass{
-    color: #f0f8ff;
+    color: rgb(240, 248, 255);
 }
 
 .red-btn{
@@ -70,7 +70,7 @@ a{
     margin: 0 0 40px auto;
     color: #f5f5f5;
     font-size: 20px;
-    background-color: #dc143c;
+    background-color: rgb(220, 20, 60);
     border-style: none;
     padding: 10px 30px;
     border-radius: 10px;
