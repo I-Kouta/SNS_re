@@ -32,10 +32,21 @@ class RegisterFormRequest extends FormRequest
 
     public function messages(){
         return [
-            "username.required" => "入力必須です",
-            "username.string" => "入力された内容の形式が異なります",
-            "username.min" => "2文字以上での入力が必須です",
-            "username.max" => "12文字以内での入力が必須です",
+            "username.required" => "名前の入力は必須です",
+            "username.string" => "名前の入力された内容の形式が異なります",
+            "username.min" => "名前は2文字以上での入力が必須です",
+            "username.max" => "名前は12文字以内での入力が必須です",
+            "mail.required" => "アドレスの入力は必須です",
+            "mail.string" => "入力されたアドレスの内容の形式が異なります",
+            "mail.email" => "アドレスの形式で入力されていません",
+            "mail.min" => "アドレスは5文字以上での入力が必須です",
+            "mail.max" => "アドレスは40文字以内での入力が必須です",
+            "mail.unique" => "すでに使用されているアドレスです",
+            "password.required" => "パスワードの入力は必須です",
+            "password.string" => "パスワードの入力された内容の形式が異なります",
+            "password.min" => "パスワードは8文字以上での入力が必須です",
+            "password.max" => "パスワードは20文字以内での入力が必須です",
+            "password.confirmed" => "パスワードが一致していません",
         ];
     }
 }
