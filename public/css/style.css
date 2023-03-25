@@ -80,11 +80,13 @@ h1{
     border-bottom: 2px solid #c0c0c0;
     -webkit-transform: rotate(-45deg); /* 反時計回り\/ */
     margin-left: 80%;
+    transition: .4s;
 }
 
 .slide-button-down.active{
     -webkit-transform: rotate(135deg); /* 時計回り/\ */
     margin-left: 80%;
+    transition: .4s;
 }
 
 /* main content */
