@@ -29,4 +29,13 @@ class RegisterFormRequest extends FormRequest
             'password' => 'required|string|min:8|max:20|confirmed'
         ];
     }
+
+    public function messages(){
+        return [
+            "username.required" => "入力必須です",
+            "username.string" => "入力された内容の形式が異なります",
+            "username.min" => "2文字以上での入力が必須です",
+            "username.max" => "12文字以内での入力が必須です",
+        ];
+    }
 }
