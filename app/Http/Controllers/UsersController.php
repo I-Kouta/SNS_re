@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,7 +37,7 @@ class UsersController extends Controller
         ]);
     }
 
-    public function profileUpdate(Request $request){
+    public function profileUpdate(ProfileUpdateFormRequest $request){
         $data = $request->input();
         $id = Auth::id();
         $request->validate([
