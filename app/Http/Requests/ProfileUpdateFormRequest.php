@@ -13,7 +13,7 @@ class ProfileUpdateFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class ProfileUpdateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'username' => 'required|string|min:2|max:12',
+            // 自分のアドレスはバリデーション対象から除外する必要がある
+            'mail' => 'required|string|email|min:5|max:40|unique:users,mail,'.$request->id.',id',
+            'password' => 'required|string|min:8|max:20|confirmed',
+            'bio' => 'max:150',
+            'images' => 'mimes:jpg, png, bmp, gif, svg'
         ];
     }
 }

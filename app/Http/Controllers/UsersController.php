@@ -40,14 +40,6 @@ class UsersController extends Controller
     public function profileUpdate(ProfileUpdateFormRequest $request){
         $data = $request->input();
         $id = Auth::id();
-        $request->validate([
-            'username' => 'required|string|min:2|max:12',
-            // 自分のアドレスはバリデーション対象から除外する必要がある
-            'mail' => 'required|string|email|min:5|max:40|unique:users,mail,'.$request->id.',id',
-            'password' => 'required|string|min:8|max:20|confirmed',
-            'bio' => 'max:150',
-            'images' => 'mimes:jpg, png, bmp, gif, svg'
-        ]);
         $this->update($data); // ここで更新
         if(($request['image']) != null){
             User::where('id', $id)->update([
