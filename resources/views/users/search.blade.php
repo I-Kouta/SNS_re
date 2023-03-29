@@ -2,7 +2,8 @@
 
 @section('content')
 
-{!! Form::open(['url' => 'searchResult','class' => 'post-form']) !!}
+{!! Form::open(['url' => 'search','class' => 'post-form']) !!}
+<!-- ここはpostで送っている -->
 {{ Form::input('text', 'keyword', null, ['required', 'class' => 'search', 'placeholder' => 'ユーザー名']) }}
 <button type="submit"><img src="{{ asset('images/search.png') }}" width="60" height="60"></button>
 @if(!empty($keyword))

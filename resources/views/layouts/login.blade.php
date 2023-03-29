@@ -57,7 +57,7 @@
                 </div>
                 <p class="btn follow"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn user"><a href="/search">ユーザー検索</a></p>
+            <p class="btn user"><a href="/search">ユーザー検索</a></p> <!-- getで送っている -->
         </div>
     </div>
     <footer>

@@ -44,8 +44,8 @@ Route::group(["middleware" => "auth"], function() {
 
   Route::get('post/{id}/delete', 'PostsController@delete');
 
-  Route::get('/search','UsersController@search');
-  Route::post('/searchResult','UsersController@searchResult');
+  Route::get('/search','UsersController@search'); // ユーザー検索に遷移する
+  Route::post('/search','UsersController@search'); // 検索ワードを送る際
 
   Route::get('/{id}/follow', 'FollowsController@follow');
   Route::get('/{id}/unFollow', 'FollowsController@unFollow');
