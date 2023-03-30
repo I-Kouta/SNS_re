@@ -16,7 +16,7 @@ class PostsController extends Controller
         ->orderBy('updated_at', 'desc')
         ->get();
         $image = User::get();
-        return view('posts.index',['list'=>$list, 'image'=>$image]);
+        return view('posts.index',compact('list', 'image'));
     }
 
     public function create(Request $request){
