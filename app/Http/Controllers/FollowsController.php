@@ -38,9 +38,7 @@ class FollowsController extends Controller
         $following_id = Auth::user()->follows()->pluck('followed_id');
         $lists = Post::with('user')->whereIn('user_id', $following_id)->latest()->get();
         $image = User::get();
-        return view('follows.FollowList')->with([
-            'lists' => $lists, 'image' => $image
-        ]);
+        return view('follows.FollowList', compact('lists', 'image'));
     }
 
     public function followerList(){
@@ -48,8 +46,6 @@ class FollowsController extends Controller
         $followed_id = Auth::user()->followers()->pluck('following_id');
         $lists = Post::with('user')->whereIn('user_id', $followed_id)->latest()->get();
         $image = User::get();
-        return view('follows.FollowerList')->with([
-            'lists' => $lists, 'image' => $image
-        ]);
+        return view('follows.FollowerList', compact('lists', 'image'));
     }
 }
