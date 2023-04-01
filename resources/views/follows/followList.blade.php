@@ -5,11 +5,9 @@
 <div class="post-form follow-image">
   Follow List
   @foreach ($image as $image)
-  @if (auth()->user()->isFollowing($image->id))
   <a href="/user/{{$image->id}}/profile">
     <img class="follow-icon" src="{{ \Storage::url($image->images) }}" width="35" height="35">
   </a>
-  @endif
   @endforeach
 </div>
 <!-- フォローしているユーザーのみ表示させたい -->
