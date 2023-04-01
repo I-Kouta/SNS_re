@@ -4,6 +4,7 @@
 
 <div class="post-form follow-image">
   Follow List
+  <!-- ここを投稿の変数と揃えてしまうと投稿していない人が表示されない -->
   @foreach ($image as $image)
   <a href="/user/{{$image->id}}/profile">
     <img class="follow-icon" src="{{ \Storage::url($image->images) }}" width="35" height="35">
