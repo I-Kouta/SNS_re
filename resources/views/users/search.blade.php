@@ -15,7 +15,6 @@
 
 <div class="search-form">
   @foreach ($user as $user)
-  @if(Auth::id() != $user->id)
   <div class="search-info">
     <img src="{{ \Storage::url($user->images) }}" width="35" height="35">
     {{ $user->username }}
@@ -25,7 +24,6 @@
     <p class="follow-btn"><a href="/{{$user->id}}/follow">フォローする</a></p>
     @endif
   </div>
-  @endif
   @endforeach
 </div>
 
