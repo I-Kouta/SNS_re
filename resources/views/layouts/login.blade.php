@@ -32,9 +32,9 @@
                     <img class="user-image" src="{{ \Storage::url(Auth::user()->images) }}">
                 </div>
                 <ul>
-                    <li><a href="/top">HOME</a></li>
-                    <li><a href="/{{ Auth::user()->id }}/profile">プロフィール編集</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
+                    <li onclick="location.href='/top'"><a>HOME</a></li>
+                    <li onclick="location.href='/{{ Auth::user()->id }}/profile'"><a>プロフィール編集</a></li>
+                    <li onclick="location.href='/logout'"><a>ログアウト</a></li>
                 </ul>
             </div>
         </div>
@@ -50,14 +50,14 @@
                     <p class="follow-title">フォロー数</p>
                     <p>{{ Auth::user()->follows()->count() }}名</p>
                 </div>
-                <p class="btn follow"><a href="/follow-list">フォローリスト</a></p>
+                <p class="btn follow" onclick="location.href='/follow-list'"><a>フォローリスト</a></p>
                 <div class="follow-count">
                     <p class="follow-title">フォロワー数</p>
                     <p>{{ Auth::user()->followers()->count() }}名</p>
                 </div>
-                <p class="btn follow"><a href="/follower-list">フォロワーリスト</a></p>
+                <p class="btn follow" onclick="location.href='/follower-list'"><a>フォロワーリスト</a></p>
             </div>
-            <p class="btn user"><a href="/search">ユーザー検索</a></p> <!-- getで送っている -->
+            <p class="btn user" onclick="location.href='/search'"><a href="">ユーザー検索</a></p> <!-- getで送っている -->
         </div>
     </div>
     <footer>
