@@ -44,6 +44,10 @@ class PostsController extends Controller
     }
 
     public function delete($id){
+        $post = Post::find($id);
+        if ($post->user_id <> Auth::id()) {
+            return redirect()->back();
+        }
         Post::where('id', $id)
         ->delete();
         return redirect('/top');
