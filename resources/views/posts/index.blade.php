@@ -9,7 +9,6 @@
 {!! Form::close() !!}
 
 @foreach ($list as $list)
-@if (auth()->user()->isFollowing($list->user->id) or (Auth::id() == $list->user->id))<!-- フォローしている、または(or)自分である -->
 <div class="list">
   <div class="left-list">
     <img src="{{ \Storage::url($list->user->images) }}" width="35" height="35">
@@ -33,7 +32,6 @@
     @endif
   </div>
 </div>
-@endif
 <!-- 編集内容が表示される -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>

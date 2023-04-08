@@ -13,6 +13,10 @@ class PostsController extends Controller
     //
     public function index(){
         $list = Post::with('user')
+        ->where(function($query) {
+            $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
+            ->orWhere("user_id", Auth::id());
+        })
         ->orderBy('updated_at', 'desc')
         ->get();
         $image = User::get();

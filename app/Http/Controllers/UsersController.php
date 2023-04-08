@@ -59,8 +59,7 @@ class UsersController extends Controller
             $keyword = $request->input('keyword');
             $query = User::query();
             if(!empty($keyword)){
-                $query
-                ->where('username', 'LIKE', "%{$keyword}%")
+                $query->where('username', 'LIKE', "%{$keyword}%")
                 ->where('id', '<>', Auth::id());
             }
             $user = $query->get();
