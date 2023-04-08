@@ -18,9 +18,9 @@
     @endif
   </div>
   @if (auth()->user()->isFollowing($user->id))
-  <p class="unFollow-btn"><a href="/{{$user->id}}/unFollow">フォロー解除</a></p>
+  <p class="unFollow-btn" onclick="location.href='/{{$user->id}}/unFollow'"><a>フォロー解除</a></p>
   @else
-  <p class="follow-btn"><a href="/{{$user->id}}/follow">フォローする</a></p>
+  <p class="follow-btn" onclick="location.href='/{{$user->id}}/follow'"><a>フォローする</a></p>
   @endif
 </div>
 @endforeach
