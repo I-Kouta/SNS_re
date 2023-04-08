@@ -57,7 +57,7 @@
                 </div>
                 <p class="btn follow" onclick="location.href='/follower-list'"><a>フォロワーリスト</a></p>
             </div>
-            <p class="btn user" onclick="location.href='/search'"><a href="">ユーザー検索</a></p> <!-- getで送っている -->
+            <p class="btn user" onclick="location.href='/search'"><a>ユーザー検索</a></p> <!-- getで送っている -->
         </div>
     </div>
     <footer>
