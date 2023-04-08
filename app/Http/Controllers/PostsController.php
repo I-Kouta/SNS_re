@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Post;
-use App\User;
 
 class PostsController extends Controller
 {
@@ -15,8 +14,7 @@ class PostsController extends Controller
         $list = Post::with('user')
         ->orderBy('updated_at', 'desc')
         ->get();
-        $image = User::get();
-        return view('posts.index',compact('list', 'image'));
+        return view('posts.index',compact('list'));
     }
 
     public function create(Request $request){

@@ -3,11 +3,7 @@
 @section('content')
 
 {!! Form::open(['url' => 'post/create','class' => 'post-form']) !!}
-@foreach ($image as $image)
-@if(Auth::id() == $image->id)
-<img class="form-icon" src="{{ \Storage::url($image->images) }}" width="35" height="35">
-@endif
-@endforeach
+<img class="form-icon" src="{{ \Storage::url(Auth::user()->images) }}" width="35" height="35">
 {{ Form::input('text', 'newPost', null, ['required', 'class' => 'tweet', 'placeholder' => '投稿内容を入力してください', 'maxlength' => '200']) }}
 <button type="submit"><img src="{{ asset('images/post.png') }}" width="100" height="100"></button>
 {!! Form::close() !!}
