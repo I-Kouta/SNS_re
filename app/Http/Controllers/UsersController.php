@@ -41,7 +41,8 @@ class UsersController extends Controller
         $data = $request->input();
         $id = Auth::id();
         $this->update($data); // ここで更新
-        if(($request['image']) != null){
+        // ここのバリデーション、修正しましょう
+        if($request->hasFile('image')){
             User::where('id', $id)->update([
                 'images' => $request->file('image')->getClientOriginalName() // storage/app/publicディレクトリに保存したい
             ]);
