@@ -41,16 +41,12 @@ class UsersController extends Controller
         $data = $request->input();
         $id = Auth::id();
         $this->update($data); // ここで更新
-        // ここのバリデーション、修正しましょう
-        if($request->hasFile('image')){
-            User::where('id', $id)->update([
-                'images' => $request->file('image')->getClientOriginalName() // storage/app/publicディレクトリに保存したい
-            ]);
-            $request->file('image')->storeAs('public/', 'images');
-        } else {
-            User::where('id', $id)->update([
-                'images' => 'Atlas.png'
-            ]);
+        if($request->hasFile('image')){ // ファイルが含まれているか
+            $images = $request->file('image')->getClientOriginalName(); // 複数回使う記述は変数でまとめる
+            $request->file('image')->storeAs('public', $images);
+            User::updateOrCreate(["id" => $id], ["images" => $images]);
+        }else{
+            User::updateOrCreate(["id" => $id], ["images" => "Atlas.png"]);
         }
         return redirect('/top');
     }
