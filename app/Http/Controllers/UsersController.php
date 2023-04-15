@@ -46,7 +46,7 @@ class UsersController extends Controller
             User::where('id', $id)->update([
                 'images' => $request->file('image')->getClientOriginalName() // storage/app/publicディレクトリに保存したい
             ]);
-            $request->file('image')->storeAs('public/', $request->file('image')->getClientOriginalName());
+            $request->file('image')->storeAs('public/', 'images');
         } else {
             User::where('id', $id)->update([
                 'images' => 'Atlas.png'
