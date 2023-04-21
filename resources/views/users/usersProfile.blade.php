@@ -3,7 +3,7 @@
 @section('content')
 @foreach ($user as $user)
 <div class="post-form">
-  <img src="{{ \Storage::url($user->images) }}" width="35" height="35">
+  <img src="{{ \Storage::url($user->images) }}" width="35" height="35" style="border-radius: 50%;">
   <div class="post-message prof-head">
     <div class="prof-head-title">
       <div class="under-margin">name</div>
@@ -28,7 +28,7 @@
 @foreach ($posts as $posts)
 <div class="list">
   <div class="left-list">
-    <img src="{{ \Storage::url($posts->user->images) }}" width="35" height="35">
+    <img src="{{ \Storage::url($posts->user->images) }}" width="35" height="35" style="border-radius: 50%;">
     <div class="post-message">
       <div class="under-margin">{{ $posts->user->username }}</div>
       {{ $posts->post }}

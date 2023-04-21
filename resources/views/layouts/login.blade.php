@@ -29,7 +29,7 @@
                 <div id="user-name">
                     <p>{{ Auth::user()->username }} さん</p>
                     <span class="slide-button-down"></span>
-                    <img class="user-image" src="{{ \Storage::url(Auth::user()->images) }}">
+                    <img class="user-image" src="{{ \Storage::url(Auth::user()->images) }}" style="border-radius: 50%;">
                 </div>
                 <ul>
                     <li onclick="location.href='/top'"><a>HOME</a></li>

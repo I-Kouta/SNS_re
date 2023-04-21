@@ -16,7 +16,7 @@
 <div class="search-form">
   @foreach ($user as $user)
   <div class="search-info">
-    <img src="{{ \Storage::url($user->images) }}" width="35" height="35">
+    <img src="{{ \Storage::url($user->images) }}" width="35" height="35" style="border-radius: 50%;">
     {{ $user->username }}
     @if (auth()->user()->isFollowing($user->id))
     <p class="unFollow-btn" onclick="location.href='/{{$user->id}}/unFollow'"><a>フォロー解除</a></p>
