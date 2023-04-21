@@ -16,7 +16,7 @@ class FollowsController extends Controller
         $is_following = $follower->isFollowing($id);
         if(!$is_following) {
             // フォローしていなければフォローする
-            $follower->follow($id);
+            $follower->follows()->attach($id);
             return back();
         }
     }
@@ -28,7 +28,7 @@ class FollowsController extends Controller
         $is_following = $follower->isFollowing($id);
         if($is_following) {
             // フォローしていればフォロー解除
-            $follower->unFollow($id);
+            $follower->follows()->detach($id);
             return back();
         }
     }
