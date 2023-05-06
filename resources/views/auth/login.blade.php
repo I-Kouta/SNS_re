@@ -7,11 +7,11 @@
 
 <p>AtlasSNSへようこそ</p>
 
-{{ Form::label('address', 'mail address', ['class' => 'address']) }}<br /> <!-- 'for', '表記される' -->
-{{ Form::text('mail',null,['class' => 'input']) }}<br />
+{{ Form::label('address', 'mail address', ['class' => 'address']) }}<br> <!-- 'for', '表記される' -->
+{{ Form::text('mail',null,['class' => 'input']) }}<br>
 
-{{ Form::label('password', 'password', ['class' => 'pass']) }}<br />
-{{ Form::password('password',['class' => 'input']) }}<br />
+{{ Form::label('password', 'password', ['class' => 'pass']) }}<br>
+{{ Form::password('password',['class' => 'input']) }}<br>
 
 {{ Form::submit('LOGIN',['class' => 'red-btn']) }}
 
