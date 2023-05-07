@@ -14,7 +14,7 @@
 {!! Form::close() !!}
 
 <div class="search-form">
-  @foreach ($user as $user)
+  @foreach ($users as $user)
   <div class="search-info">
     <img src="{{ \Storage::url($user->images) }}" width="35" height="35" style="border-radius: 50%;">
     {{ $user->username }}

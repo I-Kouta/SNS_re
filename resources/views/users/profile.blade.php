@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-@foreach ($user as $user)
+@foreach ($users as $user)
 <img class="user-image profile-icon" src="{{ asset('images/icon1.png') }}">
 @foreach ($errors->all() as $error)
   <li>{{$error}}</li>
@@ -11,12 +11,12 @@
 {!! Form::hidden('id', $user->id) !!}
 <div class="category">
   {{ Form::label('user-name', 'user name', ['class' => 'name']) }}
-  {{ Form::input('username', 'username', $user->username,['class' => 'output']) }}
+  {{ Form::input('username', 'username', $user->username, ['class' => 'output']) }}
 </div>
 
 <div class="category">
   {{ Form::label('address', 'mail address', ['class' => 'address']) }}
-  {{ Form::input('mail', 'mail', $user->mail,['class' => 'output']) }}
+  {{ Form::input('mail', 'mail', $user->mail, ['class' => 'output']) }}
 </div>
 
 <div class="category">
@@ -41,5 +41,4 @@
 {{ Form::submit('更新',['class' => 'red-btn']) }}
 {!! Form::close() !!}
 @endforeach
-
 @endsection

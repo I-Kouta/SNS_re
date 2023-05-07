@@ -8,23 +8,23 @@
 <button type="submit"><img src="{{ asset('images/post.png') }}" width="100" height="100"></button>
 {!! Form::close() !!}
 
-@foreach ($list as $list)
+@foreach ($posts as $post)
 <div class="list">
   <div class="left-list">
-    <img src="{{ \Storage::url($list->user->images) }}" width="35" height="35" style="border-radius: 50%;">
+    <img src="{{ \Storage::url($post->user->images) }}" width="35" height="35" style="border-radius: 50%;">
     <div class="post-message">
-      <div class="under-margin">{{ $list->user->username }}</div>
-      <div>{{ $list->post }}</div>
+      <div class="under-margin">{{ $post->user->username }}</div>
+      <div>{{ $post->post }}</div>
     </div>
   </div>
   <div class="right-list">
-    <div>{{ $list->updated_at }}</div>
-    @if(Auth::id() == $list->user->id)
+    <div>{{ $post->updated_at }}</div>
+    @if(Auth::id() == $post->user->id)
     <div class="update-edit">
-      <a class="js-modal-open" href="" post="{{ $list->post }}" post_id="{{ $list->id }}">
+      <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
         <img src="{{ asset('images/edit.png') }}" width="30" height="30">
       </a>
-      <a id="wrap" href="/post/{{$list->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+      <a id="wrap" href="/post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
         <img class="img-before" src="{{ asset('images/trash.png') }}">
         <img class="img-after" src="{{ asset('images/trash-h.png') }}">
       </a>
@@ -37,8 +37,8 @@
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
     {!! Form::open(['url' => '/post/update']) !!}
-    {!! Form::hidden('id', $list->id, ['class' => 'modal_id']) !!}
-    {!! Form::input('text', 'upPost', $list->post, ['required', 'class' => 'modal_post']) !!}
+    {!! Form::hidden('id', $post->id, ['class' => 'modal_id']) !!}
+    {!! Form::input('text', 'upPost', $post->post, ['required', 'class' => 'modal_post']) !!}
     <button type="submit"><img class="edit-btn" src="{{ asset('images/edit.png') }}" width="30" height="30"></button>
     {{ csrf_field() }}
     {!! Form::close() !!}
@@ -46,5 +46,4 @@
 </div>
 <!-- 編集内容が表示される -->
 @endforeach
-
 @endsection

@@ -6,21 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Post;
-use App\User;
 
 class PostsController extends Controller
 {
     //
     public function index(){
-        $list = Post::with('user')
+        $posts = Post::with('user')
         ->where(function($query) {
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
         })
         ->orderBy('updated_at', 'desc')
         ->get();
-        $image = User::get();
-        return view('posts.index',compact('list', 'image'));
+        return view('posts.index',compact('posts'));
     }
 
     public function create(Request $request){

@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-@foreach ($user as $user)
+@foreach ($users as $user)
 <div class="post-form">
   <img src="{{ \Storage::url($user->images) }}" width="35" height="35" style="border-radius: 50%;">
   <div class="post-message prof-head">
@@ -25,19 +25,18 @@
 </div>
 @endforeach
 
-@foreach ($posts as $posts)
+@foreach ($posts as $post)
 <div class="list">
   <div class="left-list">
-    <img src="{{ \Storage::url($posts->user->images) }}" width="35" height="35" style="border-radius: 50%;">
+    <img src="{{ \Storage::url($post->user->images) }}" width="35" height="35" style="border-radius: 50%;">
     <div class="post-message">
-      <div class="under-margin">{{ $posts->user->username }}</div>
-      {{ $posts->post }}
+      <div class="under-margin">{{ $post->user->username }}</div>
+      {{ $post->post }}
     </div>
   </div>
   <div class="right-list">
-    {{ $posts->updated_at }}
+    {{ $post->updated_at }}
   </div>
 </div>
 @endforeach
-
 @endsection

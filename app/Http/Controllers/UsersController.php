@@ -17,13 +17,13 @@ class UsersController extends Controller
         ->where('user_id', $id)
         ->orderBy('updated_at', 'desc')
         ->get();
-        $user = User::where('id', $id)->get();
-        return view('users.usersProfile',compact('posts', 'user'));
+        $users = User::where('id', $id)->get();
+        return view('users.usersProfile',compact('posts', 'users'));
     }
 
     public function profile($id){
-        $user = User::where('id', $id)->get();
-        return view('users.profile',compact('user'));
+        $users = User::where('id', $id)->get();
+        return view('users.profile',compact('users'));
     }
 
     protected function update(array $data)
@@ -59,11 +59,11 @@ class UsersController extends Controller
                 $query->where('username', 'LIKE', "%{$keyword}%")
                 ->where('id', '<>', Auth::id());
             }
-            $user = $query->get();
-            return view('users.search', compact('user', 'keyword'));
+            $users = $query->get();
+            return view('users.search', compact('users', 'keyword'));
         }else{
-            $user = User::where('id', '<>', Auth::id())->get();
-            return view('users.search', compact('user'));
+            $users = User::where('id', '<>', Auth::id())->get();
+            return view('users.search', compact('users'));
             // return view('users.search',['user'=>$user]);
         }
     }
