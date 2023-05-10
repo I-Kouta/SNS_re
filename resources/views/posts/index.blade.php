@@ -44,6 +44,5 @@
     {!! Form::close() !!}
   </div>
 </div>
-<!-- 編集内容が表示される -->
 @endforeach
 @endsection

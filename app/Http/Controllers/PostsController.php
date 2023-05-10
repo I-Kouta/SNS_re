@@ -16,8 +16,7 @@ class PostsController extends Controller
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
         })
-        ->orderBy('updated_at', 'desc')
-        ->get();
+        ->orderBy('updated_at', 'desc')->get();
         return view('posts.index',compact('posts'));
     }
 
@@ -46,8 +45,7 @@ class PostsController extends Controller
         if ($post->user_id <> Auth::id()) {
             return redirect()->back();
         }
-        Post::where('id', $id)
-        ->delete();
+        Post::where('id', $id)->delete();
         return redirect('/top');
     }
 }
