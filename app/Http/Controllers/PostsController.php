@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,18 @@ class PostsController extends Controller
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
         })
+        ->orderBy('updated_at', 'desc')->get();
+        return view('posts.index',compact('posts'));
+    }
+
+    public function indexToday(){
+        $posts = Post::with('user')
+        ->where(function($query) {
+            $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
+            ->orWhere("user_id", Auth::id());
+        });
+        $posts = $posts
+        ->whereDate("created_at", Carbon::today())
         ->orderBy('updated_at', 'desc')->get();
         return view('posts.index',compact('posts'));
     }
