@@ -34,6 +34,8 @@ Route::group(["middleware" => "auth"], function() { //ログイン中のペー�
   Route::get('/top','PostsController@index');
   Route::post('/top','PostsController@index');
 
+  Route::get('/top/today','PostsController@indexToday');
+
   Route::post('post/create', 'PostsController@create');
 
   Route::get('/{id}/profile','UsersController@profile');

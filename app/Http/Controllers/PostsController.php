@@ -28,7 +28,7 @@ class PostsController extends Controller
             ->orWhere("user_id", Auth::id());
         });
         $posts = $posts
-        ->whereDate("created_at", Carbon::today())
+        ->whereDate("updated_at", Carbon::today())
         ->orderBy('updated_at', 'desc')->get();
         return view('posts.index',compact('posts'));
     }
