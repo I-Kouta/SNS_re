@@ -12,25 +12,28 @@ class PostsController extends Controller
 {
     //
     public function index(){
-        $posts = Post::with('user')
-        ->where(function($query) {
-            $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
-            ->orWhere("user_id", Auth::id());
-        })
-        ->orderBy('updated_at', 'desc')->get();
+        $posts = $this->getFilteredPosts();
         return view('posts.index',compact('posts'));
     }
 
     public function indexToday(){
-        $posts = Post::with('user')
+        $posts = $this->getFilteredPosts(Carbon::today());
+        return view('posts.index',compact('posts'));
+    }
+
+    private function getFilteredPosts($startDate = null, $endDate = null){
+        $query = Post::with('user')
         ->where(function($query) {
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
         });
-        $posts = $posts
-        ->whereDate("updated_at", Carbon::today())
-        ->orderBy('updated_at', 'desc')->get();
-        return view('posts.index',compact('posts'));
+        if ($startDate && $endDate) {
+            $query->whereBetween('updated_at', [$startDate, $endDate]);
+        } elseif ($startDate) {
+            $query->whereDate('updated_at', $startDate);
+        }
+        $query->orderBy('updated_at', 'desc');
+        return $query->get();
     }
 
     public function create(Request $request){
