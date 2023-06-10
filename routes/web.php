@@ -35,6 +35,9 @@ Route::group(["middleware" => "auth"], function() { //ログイン中のペー�
   Route::post('/top','PostsController@index');
 
   Route::get('/top/today','PostsController@indexToday');
+  Route::get('/top/yesterday','PostsController@indexYesterday');
+  Route::get('/top/this_month','PostsController@indexThisMonth');
+  Route::get('/top/last_month','PostsController@indexLastMonth');
 
   Route::post('post/create', 'PostsController@create');
 

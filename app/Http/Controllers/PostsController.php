@@ -21,6 +21,21 @@ class PostsController extends Controller
         return view('posts.index',compact('posts'));
     }
 
+    public function indexYesterday(){
+        $posts = $this->getFilteredPosts(Carbon::yesterday());
+        return view('posts.index',compact('posts'));
+    }
+
+    public function indexThisMonth(){
+        $posts = $this->getFilteredPosts(Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth());
+        return view('posts.index',compact('posts'));
+    }
+
+    public function indexLastMonth(){
+        $posts = $this->getFilteredPosts(Carbon::now()->subMonth(), Carbon::now());
+        return view('posts.index',compact('posts'));
+    }
+
     private function getFilteredPosts($startDate = null, $endDate = null){
         $query = Post::with('user')
         ->where(function($query) {

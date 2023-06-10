@@ -58,7 +58,10 @@
                 <p class="btn follow" onclick="location.href='/follower-list'"><a>フォロワーリスト</a></p>
             </div>
             <p class="btn user" onclick="location.href='/search'"><a>ユーザー検索</a></p> <!-- getで送っている -->
-            <p class="btn user" onclick="location.href='/top/today'"><a>今日の投稿</a></p>
+            <p class="btn user" onclick="location.href='/top/today'"><a>今日</a></p>
+            <p class="btn user" onclick="location.href='/top/yesterday'"><a>昨日</a></p>
+            <p class="btn user" onclick="location.href='/top/this_month'"><a>今月</a></p>
+            <p class="btn user" onclick="location.href='/top/last_month'"><a>先月</a></p>
         </div>
     </div>
     <footer>
