@@ -37,14 +37,14 @@ class PostsController extends Controller
     }
 
     private function getFilteredPosts($startDate = null, $endDate = null){
-        $query = Post::
-        where(function($query) {
+        $query = Post::with("user")
+        ->where(function($query){
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
         });
-        if ($startDate && $endDate) {
+        if($startDate && $endDate){
             $query->whereBetween('updated_at', [$startDate, $endDate]);
-        } elseif ($startDate) {
+        }elseif($startDate){
             $query->whereDate('updated_at', $startDate);
         }
         $query->orderBy('updated_at', 'desc');

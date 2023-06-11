@@ -13,8 +13,8 @@ class UsersController extends Controller
 {
     //
     public function usersProfile($id){
-        $posts = Post::
-        where('user_id', $id)
+        $posts = Post::with("user")
+        ->where('user_id', $id)
         ->orderBy('updated_at', 'desc')->get();
         $users = User::where('id', $id)->get();
         return view('users.usersProfile',compact('posts', 'users'));
