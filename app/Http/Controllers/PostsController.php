@@ -37,8 +37,8 @@ class PostsController extends Controller
     }
 
     private function getFilteredPosts($startDate = null, $endDate = null){
-        $query = Post::with('user')
-        ->where(function($query) {
+        $query = Post::
+        where(function($query) {
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
         });
