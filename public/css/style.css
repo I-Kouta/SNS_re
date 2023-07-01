@@ -3,6 +3,7 @@ html{
 }
 
 body{
+    background: rgba(24, 106, 201, 0.1);
 }
 
 /* header */
@@ -205,10 +206,10 @@ h1{
 }
 
 .tweet{
-    border: none;
     width: 50%;
     font-size: 20px;
     margin-left: 10px;
+    border: 2px solid rgb(24, 106, 201, 0.5);
 }
 
 ::placeholder{
