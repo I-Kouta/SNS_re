@@ -15,22 +15,22 @@ class UsersTableSeeder extends Seeder
             [
                 'username' => 'のっち',
                 "mail" => "nnn@nnn",
-                "password" => Hash::make("nnn333"),
+                "password" => Hash::make("nnnn3333"),
                 "bio" => "こどものっち",
-                "images" => "Atlas.png"],
+                "images" => "ダーク系.jpg"],
             [
                 'username' => '西脇',
                 "mail" => "aaa@aaa",
-                "password" => Hash::make("aaa333"),
+                "password" => Hash::make("aaaa3333"),
                 "bio" => "きになる姫",
-                "images" => "Atlas.png"
+                "images" => "A-chan.jpg"
             ],
             [
                 'username' => 'ゆか',
                 "mail" => "yyy@yyy",
-                "password" => Hash::make("yyy333"),
+                "password" => Hash::make("yyyy3333"),
                 "bio" => "ログイン",
-                "images" => "Atlas.png"
+                "images" => "atlas.png"
             ]
         ]);
     }
