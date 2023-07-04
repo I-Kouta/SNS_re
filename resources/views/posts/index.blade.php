@@ -37,7 +37,7 @@
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
     {!! Form::open(['url' => '/post/update']) !!}
-    {!! Form::hidden('id', $post->id, ['class' => 'modal_id']) !!}
+    {!! Form::hidden('id', $post->id) !!}
     {!! Form::input('text', 'upPost', $post->post, ['required', 'class' => 'modal_post']) !!}
     <button type="submit"><img class="edit-btn" src="{{ asset('images/edit.png') }}" width="30" height="30"></button>
     {{ csrf_field() }}
