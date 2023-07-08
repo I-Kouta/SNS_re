@@ -13,7 +13,7 @@ class FollowsController extends Controller
         // followsテーブルに追加する記述
         $follower = Auth::user(); // フォローしているか
         $is_following = $follower->isFollowing($id);
-        if(!$is_following) {
+        if(!$is_following){
             $follower->follows()->attach($id); // フォローしていなければフォローする
             return back();
         }
@@ -22,7 +22,7 @@ class FollowsController extends Controller
     public function unFollow($id){ // followsテーブルから削除する記述
         $follower = Auth::user();
         $is_following = $follower->isFollowing($id);
-        if($is_following) {
+        if($is_following){
             $follower->follows()->detach($id); // フォローしていればフォロー解除
             return back();
         }
