@@ -13,11 +13,11 @@
       <div class="under-margin">{{ $user->username }}</div>
       {{ $user->bio }}
     </div>
-    @if (auth()->user()->isFollowed($user->id))
+    @if (Auth::user()->isFollowed($user->id))
     <p style="font-size:15px; margin-left: 20px; color: #186AC9;">フォローされています</p>
     @endif
   </div>
-  @if (auth()->user()->isFollowing($user->id))
+  @if (Auth::user()->isFollowing($user->id))
   <p class="unFollow-btn" onclick="location.href='/{{$user->id}}/unFollow'"><a>フォロー解除</a></p>
   @else
   <p class="follow-btn" onclick="location.href='/{{$user->id}}/follow'"><a>フォローする</a></p>
