@@ -13,14 +13,14 @@ class PostsTableSeeder extends Seeder
     {
         DB::table('posts')->insert([
             [
-                "user_id" => "1",
+                "user_id" => "23001",
                 "post" => "日焼け後"],
             [
-                "user_id" => "2",
+                "user_id" => "23002",
                 "post" => "あやねっと",
             ],
             [
-                "user_id" => "3",
+                "user_id" => "23003",
                 "post" => "電車で隣に乗りたい",
             ]
         ]);

@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             // $table->increments('id')->startFrom(23001);
+            // $table->unsignedBigInteger("id")->default(100)->autoIncrement();
             $table->string('username',255);
             $table->string('mail',255);
             $table->string('password',255);
@@ -24,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('current_timestamp on update current_timestamp'));
         });
+        DB::statement("ALTER TABLE users AUTO_INCREMENT = 23001;");
     }
 
     /**
