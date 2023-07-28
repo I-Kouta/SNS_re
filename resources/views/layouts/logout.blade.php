@@ -22,7 +22,7 @@
 <body>
   <header>
     <h1><img src="{{ asset('images/atlas.png') }}"></h1>
-    <p class="sns-title">Social Network Service</p>
+    <p>Social Network Service</p>
   </header>
   <div id="container">
     @yield('content')
