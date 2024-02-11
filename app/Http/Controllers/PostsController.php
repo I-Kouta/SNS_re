@@ -1,54 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Post;
 
 class PostsController extends Controller
 {
     //
     public function index(){
-        $posts = $this->getFilteredPosts();
-        return view('posts.index',compact('posts'));
-    }
-
-    public function indexToday(){
-        $posts = $this->getFilteredPosts(Carbon::today());
-        return view('posts.index',compact('posts'));
-    }
-
-    public function indexYesterday(){
-        $posts = $this->getFilteredPosts(Carbon::yesterday());
-        return view('posts.index',compact('posts'));
-    }
-
-    public function indexThisMonth(){
-        $posts = $this->getFilteredPosts(Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth());
-        return view('posts.index',compact('posts'));
-    }
-
-    public function indexLastMonth(){
-        $posts = $this->getFilteredPosts(Carbon::now()->subMonth(), Carbon::now());
-        return view('posts.index',compact('posts'));
-    }
-
-    private function getFilteredPosts($startDate = null, $endDate = null){
-        $query = Post::with("user")
+        $posts = Post::with("user")
         ->where(function($query){
             $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
             ->orWhere("user_id", Auth::id());
-        });
-        if($startDate && $endDate){
-            $query->whereBetween('updated_at', [$startDate, $endDate]);
-        }elseif($startDate){
-            $query->whereDate('updated_at', $startDate);
-        }
-        $query->orderBy('updated_at', 'desc');
-        return $query->get();
+        })
+        ->orderBy('updated_at', 'desc')
+        ->get();
+        return view('posts.index',compact('posts'));
     }
 
     public function create(Request $request){
@@ -64,9 +32,9 @@ class PostsController extends Controller
         $id = $request->input('id');
         $up_post = $request->input('upPost');
         Post::where('id', $id)
-        ->update(
-            ['post' => $up_post]
-        );
+        ->update([
+            'post' => $up_post
+        ]);
         return redirect('/top');
     }
 
