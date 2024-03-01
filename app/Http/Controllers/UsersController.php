@@ -21,8 +21,8 @@ class UsersController extends Controller
     }
 
     public function profile($id){
-        $users = User::where('id', $id)->get();
-        return view('users.profile',compact('users'));
+        $user = User::find($id);
+        return view('users.profile',compact('user'));
     }
 
     protected function update(array $data)

@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-@foreach ($users as $user)
+
 <img class="user-image profile-icon" src="{{ \Storage::url(Auth::user()->images) }}" width="35" height="35" style="border-radius: 50%;">
 @foreach ($errors->all() as $error)
   <li>{{$error}}</li>
@@ -40,5 +40,5 @@
 </div>
 {{ Form::submit('更新',['class' => 'red-btn']) }}
 {!! Form::close() !!}
-@endforeach
+
 @endsection
