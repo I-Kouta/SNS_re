@@ -16,8 +16,8 @@ class UsersController extends Controller
         $posts = Post::with("user")
         ->where('user_id', $id)
         ->orderBy('updated_at', 'desc')->get();
-        $users = User::where('id', $id)->get();
-        return view('users.usersProfile',compact('posts', 'users'));
+        $user = User::find($id);
+        return view('users.usersProfile',compact('posts', 'user'));
     }
 
     public function profile($id){

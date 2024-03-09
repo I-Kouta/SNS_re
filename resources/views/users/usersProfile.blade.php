@@ -1,7 +1,6 @@
 @extends('layouts.login')
 
 @section('content')
-@foreach ($users as $user)
 <div class="post-form">
   <img src="{{ \Storage::url($user->images) }}" width="35" height="35" style="border-radius: 50%;">
   <div class="post-message prof-head">
@@ -23,7 +22,6 @@
   <p class="follow-btn" onclick="location.href='/{{$user->id}}/follow'"><a>フォローする</a></p>
   @endif
 </div>
-@endforeach
 
 @foreach ($posts as $post)
 <div class="list">
