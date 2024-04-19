@@ -29,7 +29,7 @@ class ProfileUpdateFormRequest extends FormRequest
             'mail' => 'required|string|email|min:5|max:40|unique:users,mail,' .$this->id. "id",
             'password' => 'required|string|min:8|max:20|confirmed',
             'bio' => 'max:150',
-            'images' => 'mimes:jpg, png, bmp, gif, svg'
+            'images' => 'image|mimes:jpg, png, bmp, gif, svg'
         ];
     }
 
@@ -51,7 +51,7 @@ class ProfileUpdateFormRequest extends FormRequest
             "password.max" => "パスワードは20文字以内での入力が必須です",
             "password.confirmed" => "パスワードが一致していません",
             "bio.max" => "紹介文は150字以内で入力してください",
-            "images.mines" => "この形式の画像は保存できません",
+            "images.mimes" => "この形式の画像は保存できません",
         ];
     }
 }

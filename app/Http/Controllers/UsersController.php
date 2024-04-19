@@ -43,9 +43,9 @@ class UsersController extends Controller
         if($request->hasFile('image')){ // ファイルが含まれているか
             $images = $request->file('image')->getClientOriginalName(); // 複数回使う記述は変数でまとめる
             $request->file('image')->storeAs('public', $images);
-            User::updateOrCreate(["id" => $id], ["images" => $images]);
-        }else{
-            User::updateOrCreate(["id" => $id], ["images" => "Atlas.png"]);
+            User::where('id', $id)->update([
+                "images" => $images
+            ]);
         }
         return redirect('/top');
     }
