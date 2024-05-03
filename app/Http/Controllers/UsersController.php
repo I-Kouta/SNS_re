@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\ProfileUpdateFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\User;
 use App\Post;
-
 class UsersController extends Controller
+
 {
     //
     public function usersProfile($id){
@@ -25,8 +23,7 @@ class UsersController extends Controller
         return view('users.profile',compact('user'));
     }
 
-    protected function update(array $data)
-    {
+    protected function update(array $data){
         $id = Auth::id();
         return User::where('id', $id)->update([
             'username' => $data['username'],
@@ -63,7 +60,6 @@ class UsersController extends Controller
         }else{
             $users = User::where('id', '<>', Auth::id())->get();
             return view('users.search', compact('users'));
-            // return view('users.search',['user'=>$user]);
         }
     }
 }

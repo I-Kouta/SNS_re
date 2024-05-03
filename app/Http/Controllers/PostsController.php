@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
-
 class PostsController extends Controller
+
 {
     //
     public function index(){
         $posts = Post::with("user")
-        ->where(function($query){
-            $query->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
-            ->orWhere("user_id", Auth::id());
-        })
-        ->orderBy('updated_at', 'desc')
-        ->get();
+        ->whereIn("user_id", Auth::user()->follows()->pluck('followed_id'))
+        ->orWhere("user_id", Auth::id())
+        ->orderBy('updated_at', 'desc')->get();
         return view('posts.index',compact('posts'));
     }
 
@@ -40,7 +37,7 @@ class PostsController extends Controller
 
     public function delete($id){
         $post = Post::find($id);
-        if ($post->user_id <> Auth::id()) {
+        if ($post->user_id <> Auth::id()){
             return redirect()->back();
         }
         Post::where('id', $id)->delete();
