@@ -4,7 +4,7 @@
 
 {!! Form::open(['url' => 'post/create','class' => 'post-form']) !!}
 <img class="form-icon" src="{{ \Storage::url(Auth::user()->images) }}" width="35" height="35" style="border-radius: 50%;">
-{{ Form::input('text', 'newPost', null, ['required', 'class' => 'tweet', 'placeholder' => '投稿内容を入力してください', 'maxlength' => '200']) }}
+{!! Form::textarea('newPost', null, ['required', 'class' => 'tweet', 'placeholder' => '投稿内容を入力してください', 'maxlength' => '200']) !!}
 <button type="submit"><img src="{{ asset('images/post.png') }}" width="100" height="100"></button>
 {!! Form::close() !!}
 
@@ -14,7 +14,7 @@
     <img src="{{ \Storage::url($post->user->images) }}" width="35" height="35" style="border-radius: 50%;">
     <div class="post-message">
       <div class="under-margin">{{ $post->user->username }}</div>
-      <div>{{ $post->post }}</div>
+      <div>{!!nl2br ($post->post) !!}</div>
     </div>
   </div>
   <div class="right-list">
