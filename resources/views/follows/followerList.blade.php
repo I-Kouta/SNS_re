@@ -20,7 +20,7 @@
     </a>
     <div class="post-message">
       <div class="under-margin">{{ $post->user->username }}</div>
-      {{ $post->post }}
+      {!!nl2br ($post->post) !!}
     </div>
   </div>
   <div class="right-list">

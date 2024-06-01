@@ -29,7 +29,7 @@
     <img src="{{ \Storage::url($post->user->images) }}" width="35" height="35" style="border-radius: 50%;">
     <div class="post-message">
       <div class="under-margin">{{ $post->user->username }}</div>
-      {{ $post->post }}
+      {!!nl2br ($post->post) !!}
     </div>
   </div>
   <div class="right-list">
