@@ -18,9 +18,8 @@ class UsersController extends Controller
         return view('users.usersProfile',compact('posts', 'user'));
     }
 
-    public function profile($id){
-        $user = User::find($id);
-        return view('users.profile',compact('user'));
+    public function profile(){
+        return view('users.profile');
     }
 
     protected function update(array $data){

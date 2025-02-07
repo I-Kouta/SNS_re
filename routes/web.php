@@ -36,7 +36,7 @@ Route::group(["middleware" => "auth"], function() { //ログイン中のペー�
 
   Route::post('post/create', 'PostsController@create');
 
-  Route::get('/{id}/profile','UsersController@profile');
+  Route::get('/profile','UsersController@profile');
   Route::post('/profile/update','UsersController@profileUpdate');
 
   Route::post('post/update', 'PostsController@update');

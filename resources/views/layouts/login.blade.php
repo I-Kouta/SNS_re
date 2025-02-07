@@ -33,7 +33,7 @@
                 </div>
                 <ul>
                     <li onclick="location.href='/top'"><a>HOME</a></li>
-                    <li onclick="location.href='/{{ Auth::user()->id }}/profile'"><a>プロフィール編集</a></li>
+                    <li onclick="location.href='/profile'"><a>プロフィール編集</a></li>
                     <li onclick="location.href='/logout'"><a>ログアウト</a></li>
                 </ul>
             </div>
