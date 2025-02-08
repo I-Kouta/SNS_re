@@ -1,6 +1,6 @@
-@extends('layouts.login')
+@extends("layouts.login")
 
-@section('content')
+@section("content")
 
 <div class="post-form follow-image">
   Follow List

@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = "/home";
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,7 @@ class RegisterController extends Controller
      * @return void
      */
     public function __construct(){
-        $this->middleware('guest');
+        $this->middleware("guest");
     }
 
     /**
@@ -47,9 +47,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data){
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed'
+            "username" => "required|string|max:255",
+            "mail" => "required|string|email|max:255|unique:users",
+            "password" => "required|string|min:4|confirmed"
         ]);
     }
 
@@ -61,9 +61,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data){
         return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => bcrypt($data['password'])
+            "username" => $data["username"],
+            "mail" => $data["mail"],
+            "password" => bcrypt($data["password"])
         ]);
     }
 
@@ -72,17 +72,17 @@ class RegisterController extends Controller
     }
 
     public function register(RegisterFormRequest $request){
-        // if($request->isMethod('post')){
+        // if($request->isMethod("post")){
             $data = $request->input(); // ここに入力したデータが入っている
             // dd($data); // デバッグ関数
             $this->create($data); // ここで実際に登録作業を行っている(64行目へ)
-            $request->session()->put('username', $data['username']); // ここでセッションにusernameを保存する
-            return redirect('added'); // ユーザー登録完了の画面、次へ進む
+            $request->session()->put("username", $data["username"]); // ここでセッションにusernameを保存する
+            return redirect("added"); // ユーザー登録完了の画面、次へ進む
         // }
     }
 
     public function added(){
         // ここに新規登録したユーザー情報を書く
-        return view('auth.added');
+        return view("auth.added");
     }
 }

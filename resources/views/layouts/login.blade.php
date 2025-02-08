@@ -41,7 +41,7 @@
     </header>
     <div id="row">
         <div id="container">
-            @yield('content')
+            @yield("content")
         </div>
         <div id="side-bar">
             <div id="confirm">

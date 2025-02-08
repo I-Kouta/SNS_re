@@ -1,10 +1,10 @@
-@extends('layouts.login')
+@extends("layouts.login")
 
-@section('content')
+@section("content")
 
-{!! Form::open(['url' => 'post/create','class' => 'post-form']) !!}
+{!! Form::open(["url" => "post/create","class" => "post-form"]) !!}
 <img class="form-icon" src="{{ \Storage::url(Auth::user()->images) }}" width="35" height="35" style="border-radius: 50%;">
-{!! Form::textarea('newPost', null, ['required', 'class' => 'tweet', 'placeholder' => '投稿内容を入力してください', 'maxlength' => '200']) !!}
+{!! Form::textarea("newPost", null, ["required", "class" => "tweet", "placeholder" => "投稿内容を入力してください", "maxlength" => "200"]) !!}
 <button type="submit"><img src="{{ asset('images/post.png') }}" width="100" height="100"></button>
 {!! Form::close() !!}
 
@@ -24,7 +24,7 @@
       <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}">
         <img src="{{ asset('images/edit.png') }}" width="30" height="30">
       </a>
-      <a id="wrap" href="/post/{{$post->id}}/delete" onclick="return confirm('この投稿を削除します。よろしいでしょうか？')">
+      <a id="wrap" href="/post/{{$post->id}}/delete" onclick="return confirm("この投稿を削除します。よろしいでしょうか？")">
         <img class="img-before" src="{{ asset('images/trash.png') }}">
         <img class="img-after" src="{{ asset('images/trash-h.png') }}">
       </a>
@@ -36,9 +36,9 @@
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
-    {!! Form::open(['url' => '/post/update']) !!}
-    {!! Form::hidden('id', $post->id) !!}
-    {!! Form::input('text', 'upPost', $post->post, ['required', 'class' => 'modal_post']) !!}
+    {!! Form::open(["url" => "/post/update"]) !!}
+    {!! Form::hidden("id", $post->id) !!}
+    {!! Form::input("text", "upPost", $post->post, ["required", "class" => "modal_post"]) !!}
     <button type="submit"><img class="edit-btn" src="{{ asset('images/edit.png') }}" width="30" height="30"></button>
     {{ csrf_field() }}
     {!! Form::close() !!}
