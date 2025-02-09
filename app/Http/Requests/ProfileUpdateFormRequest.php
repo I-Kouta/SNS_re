@@ -24,12 +24,12 @@ class ProfileUpdateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            "username" => "required|string|min:2|max:12",
+            "username" => "required|string|min : 2|max : 12",
             // 自分のアドレスはバリデーション対象から除外する必要がある
-            "mail" => "required|string|email|min:5|max:40|unique:users,mail," .$this->id. "id",
-            "password" => "required|string|min:8|max:20|confirmed",
-            "bio" => "max:150",
-            "images" => "image|mimes:jpg, png, bmp, gif, svg"
+            "mail" => "required|string|email|min : 5|max : 40|unique : users, mail, " .$this->id. "id",
+            "password" => "required|string|min : 8|max : 20|confirmed",
+            "bio" => "max : 150",
+            "images" => "image|mimes : jpg, png, bmp, gif, svg"
         ];
     }
 

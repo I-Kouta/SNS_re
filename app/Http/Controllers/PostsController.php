@@ -13,7 +13,7 @@ class PostsController extends Controller
         ->whereIn("user_id", Auth::user()->follows()->pluck("followed_id"))
         ->orWhere("user_id", Auth::id())
         ->orderBy("updated_at", "desc")->get();
-        return view("posts.index",compact("posts"));
+        return view("posts.index", compact("posts"));
     }
 
     public function create(Request $request){

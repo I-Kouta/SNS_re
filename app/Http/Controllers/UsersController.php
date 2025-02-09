@@ -15,7 +15,7 @@ class UsersController extends Controller
         ->where("user_id", $id)
         ->orderBy("updated_at", "desc")->get();
         $user = User::find($id);
-        return view("users.usersProfile",compact("posts", "user"));
+        return view("users.usersProfile", compact("posts", "user"));
     }
 
     public function profile(){
