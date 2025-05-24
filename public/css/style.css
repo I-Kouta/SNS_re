@@ -30,12 +30,6 @@ h1{
     height: 25px;
 }
 
-#user-profile{
-    margin-top: 30px;
-    width: 25%;
-    z-index: 1;
-}
-
 #user-name{
     display: flex;
     flex-wrap: wrap;
@@ -47,6 +41,12 @@ h1{
 #user-name p{
     color: #f5f5f5;
     font-size: 20px;
+}
+
+#user-profile {
+    margin-top: 30px;
+    width: 25%;
+    z-index: 1;
 }
 
 #user-profile ul li{
